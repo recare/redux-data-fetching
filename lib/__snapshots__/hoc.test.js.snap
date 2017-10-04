@@ -83,45 +83,46 @@ exports[`HOC DataHandlers throws if reducer is not passed as props 1`] = `"DataH
 exports[`HOC GraphQLConnecter selects data in the cache 1`] = `
 Object {
   "data": Object {
-    "entities": Object {
-      "User": Object {
-        "1": Object {
-          "friends": Array [
-            2,
-            3,
-          ],
-          "id": 1,
-          "name": "Alan",
-        },
-        "2": Object {
-          "friends": Array [
-            1,
-          ],
-          "id": 2,
-          "name": "Antoine",
-        },
-        "3": Object {
-          "friends": null,
-          "id": 3,
-          "name": "Sophie",
-        },
+    "entities": Immutable.Map {
+      User: Immutable.Map {
+            1: Object {
+                  "friends": Array [
+                    2,
+                    3,
+                  ],
+                  "id": 1,
+                  "name": "Alan",
+                },
+            2: Object {
+                  "friends": Array [
+                    1,
+                  ],
+                  "id": 2,
+                  "name": "Antoine",
+                },
+            3: Object {
+                  "friends": null,
+                  "id": 3,
+                  "name": "Sophie",
+                },
       },
-    },
-    "queries": Object {
-      "1002205036": Object {
-        "progress": "not started",
-        "results": Object {
-          "byEntity": Object {},
-          "byQuery": Object {
-            "users": Array [
-              1,
-              2,
-            ],
+},
+    "queries": Immutable.Map {
+      1002205036: Object {
+            "progress": "not started",
+            "results": Object {
+              "byEntity": Immutable.Map {
+      },
+              "byQuery": Immutable.Map {
+                users: Array [
+                          1,
+                          2,
+                        ],
+      },
+              "raw": null,
+            },
           },
-          "raw": null,
-        },
-      },
-    },
+},
   },
   "dispatch": [Function],
   "queryProgress": "not started",

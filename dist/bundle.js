@@ -375,6 +375,7 @@ exports.DataReducerRecord = exports.QueryRecord = exports.ResultsRecord = export
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
+exports.deepMerge = deepMerge;
 exports.default = configureReducer;
 
 var _immutable = __webpack_require__(4);
@@ -404,6 +405,34 @@ var DataReducerRecord = exports.DataReducerRecord = (0, _immutable.Record)({
   queries: (0, _immutable.Map)()
 });
 
+var baseTypes = (0, _immutable.Set)(["number", "string", "boolean"]);
+
+function deepMerge(a, b) {
+  if (a === undefined || a === null) {
+    return b;
+  }
+
+  if (b === null) {
+    return b;
+  }
+
+  if (baseTypes.has(typeof a === "undefined" ? "undefined" : _typeof(a)) || baseTypes.has(typeof b === "undefined" ? "undefined" : _typeof(b))) {
+    return b === undefined ? a : b;
+  }
+
+  if (!a.mergeDeepWith) {
+    var fromJSa = (0, _immutable.fromJS)(a);
+
+    if (!fromJSa.mergeDeepWith) {
+      console.log("NO MERGE WITH FUNCTION", typeof a === "undefined" ? "undefined" : _typeof(a), a, typeof b === "undefined" ? "undefined" : _typeof(b), b);
+    }
+
+    return fromJSa.mergeDeepWith(deepMerge, b);
+  }
+
+  return a.mergeDeepWith(deepMerge, b);
+}
+
 function configureReducer(normalizrTypes, recordsTypes, graphQLSchema) {
   function warnBadIDRequest(type, supposedId) {
     console.warn("You're trying to delete a key of bad type for type", type, ":", supposedId, ".Keys must be of type number, string or identified object eg: {id: 'key'}. Aborting request");
@@ -429,10 +458,9 @@ function configureReducer(normalizrTypes, recordsTypes, graphQLSchema) {
           return Object.assign({}, red, _defineProperty({}, key, _typeof(action.payload.entities[key]) == "object" && Array.isArray(action.payload.entities[key]) ? [type] : type));
         }, {});
         var normalized = (0, _normalizr.normalize)(JSON.parse(JSON.stringify(action.payload.entities)), normalizrModel);
+
         return state.update("entities", function (entities) {
-          return entities.mergeDeepWith(function (a, b) {
-            return b === undefined ? a : b;
-          }, (0, _graphqlTypesConverters.convertsNormalizedEntitiesToRecords)(normalized.entities, recordsTypes, graphQLSchema));
+          return entities.mergeDeepWith(deepMerge, (0, _graphqlTypesConverters.convertsNormalizedEntitiesToRecords)(normalized.entities, recordsTypes, graphQLSchema));
         }).update("queries", function (queries) {
           return action.payload.query ? queries.set(action.payload.query.request.hash.toString(), new QueryRecord({
             results: new ResultsRecord({
