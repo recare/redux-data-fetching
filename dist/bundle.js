@@ -420,17 +420,17 @@ function deepMerge(a, b) {
     return b === undefined ? a : b;
   }
 
-  if (!a.mergeDeepWith) {
+  if (!a.mergeWith) {
     var fromJSa = (0, _immutable.fromJS)(a);
 
-    if (!fromJSa.mergeDeepWith) {
+    if (!fromJSa.mergeWith) {
       console.log("NO MERGE WITH FUNCTION", typeof a === "undefined" ? "undefined" : _typeof(a), a, typeof b === "undefined" ? "undefined" : _typeof(b), b);
     }
 
-    return fromJSa.mergeDeepWith(deepMerge, b);
+    return fromJSa.mergeWith(deepMerge, b);
   }
 
-  return a.mergeDeepWith(deepMerge, b);
+  return a.mergeWith(deepMerge, b);
 }
 
 function configureReducer(normalizrTypes, recordsTypes, graphQLSchema) {
