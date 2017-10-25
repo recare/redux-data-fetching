@@ -429,9 +429,8 @@ function configureReducer(normalizrTypes, recordsTypes, graphQLSchema) {
           return Object.assign({}, red, _defineProperty({}, key, _typeof(action.payload.entities[key]) == "object" && Array.isArray(action.payload.entities[key]) ? [type] : type));
         }, {});
         var normalized = (0, _normalizr.normalize)(JSON.parse(JSON.stringify(action.payload.entities)), normalizrModel);
-
         return state.update("entities", function (entities) {
-          return entities.mergeWith(function (a, b) {
+          return entities.mergeDeepWith(function (a, b) {
             return b === undefined ? a : b;
           }, (0, _graphqlTypesConverters.convertsNormalizedEntitiesToRecords)(normalized.entities, recordsTypes, graphQLSchema));
         }).update("queries", function (queries) {

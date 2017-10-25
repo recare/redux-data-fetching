@@ -2,85 +2,85 @@
 
 exports[`Reducer Busts query cache removes the query if it exists 1`] = `
 Object {
-  "entities": Immutable.Map {
-},
-  "queries": Immutable.Map {
-},
+  "entities": Object {},
+  "queries": Object {},
 }
 `;
 
 exports[`Reducer Package Data should package data correctly 1`] = `
 Object {
-  "entities": Immutable.Map {
-    User: Object {
-        "2": Object {
-          "age": undefined,
-          "friends": Array [
-            3,
-          ],
-          "id": 2,
-          "name": "Antoine",
-        },
-        "3": Object {
-          "age": 28,
-          "friends": undefined,
-          "id": 3,
-          "name": "Joffrey",
-        },
+  "entities": Object {
+    "Skill": Object {
+      "1": Object {
+        "id": 1,
+        "power": 5,
+        "target": 1,
       },
-    Skill: Object {
-        "1": Object {
-          "id": 1,
-          "power": 5,
-          "target": undefined,
-        },
-        "2": Object {
-          "id": 2,
-          "power": 2,
-          "target": 2,
-        },
+      "2": Object {
+        "id": 2,
+        "power": 2,
+        "target": 2,
       },
-},
-  "queries": Immutable.Map {
-},
+    },
+    "User": Object {
+      "1": Object {
+        "age": undefined,
+        "friends": Array [
+          2,
+          3,
+        ],
+        "id": 1,
+        "name": "Alan",
+      },
+      "2": Object {
+        "age": undefined,
+        "friends": Array [
+          3,
+        ],
+        "id": 2,
+        "name": "Antoine",
+      },
+      "3": Object {
+        "age": 28,
+        "friends": undefined,
+        "id": 3,
+        "name": "Joffrey",
+      },
+    },
+  },
+  "queries": Object {},
 }
 `;
 
 exports[`Reducer Query failed marks query progress in reducer as failed 1`] = `
 Object {
-  "entities": Immutable.Map {
-},
-  "queries": Immutable.Map {
-    904239430: Object {
-        "progress": "failed",
-        "results": Object {
-          "byEntity": Immutable.Map {
-    },
-          "byQuery": Immutable.Map {
-    },
-          "raw": null,
-        },
+  "entities": Object {},
+  "queries": Object {
+    "904239430": Object {
+      "progress": "failed",
+      "results": Object {
+        "byEntity": Object {},
+        "byQuery": Object {},
+        "raw": null,
       },
-},
+    },
+  },
 }
 `;
 
 exports[`Reducer Query started puts query state in reducer 1`] = `
 Object {
-  "entities": Immutable.Map {
-},
-  "queries": Immutable.Map {
-    904239430: Object {
-        "progress": "pending",
-        "results": Object {
-          "byEntity": Immutable.Map {
-    },
-          "byQuery": Immutable.Map {
-    },
-          "raw": null,
-        },
+  "entities": Object {},
+  "queries": Object {
+    "904239430": Object {
+      "progress": "pending",
+      "results": Object {
+        "byEntity": Object {},
+        "byQuery": Object {},
+        "raw": null,
       },
-},
+    },
+  },
 }
 `;
 
@@ -105,103 +105,99 @@ Immutable.Map {
 
 exports[`Reducer Remove Data shouldn't crash if no data exists 1`] = `
 Object {
-  "entities": Immutable.Map {
-},
-  "queries": Immutable.Map {
-},
+  "entities": Object {},
+  "queries": Object {},
 }
 `;
 
 exports[`Reducer accepts queries 1`] = `
 Object {
-  "entities": Immutable.Map {
-    User: Object {
-        "2": Object {
-          "age": undefined,
-          "friends": Array [
-            3,
+  "entities": Object {
+    "Skill": Object {
+      "1": Object {
+        "id": 1,
+        "power": 5,
+        "target": undefined,
+      },
+      "2": Object {
+        "id": 2,
+        "power": 2,
+        "target": 2,
+      },
+    },
+    "User": Object {
+      "2": Object {
+        "age": undefined,
+        "friends": Array [
+          3,
+        ],
+        "id": 2,
+        "name": "Antoine",
+      },
+      "3": Object {
+        "age": 28,
+        "friends": undefined,
+        "id": 3,
+        "name": "Joffrey",
+      },
+    },
+  },
+  "queries": Object {
+    "queryhash": Object {
+      "progress": "succeed",
+      "results": Object {
+        "byEntity": Object {},
+        "byQuery": Object {
+          "skills": Array [
+            1,
+            2,
           ],
-          "id": 2,
-          "name": "Antoine",
+          "users": "2",
         },
-        "3": Object {
-          "age": 28,
-          "friends": undefined,
-          "id": 3,
-          "name": "Joffrey",
-        },
-      },
-    Skill: Object {
-        "1": Object {
-          "id": 1,
-          "power": 5,
-          "target": undefined,
-        },
-        "2": Object {
-          "id": 2,
-          "power": 2,
-          "target": 2,
-        },
-      },
-},
-  "queries": Immutable.Map {
-    queryhash: Object {
-        "progress": "succeed",
-        "results": Object {
-          "byEntity": Immutable.Map {
-    },
-          "byQuery": Immutable.Map {
-            users: "2",
-            skills: Array [
-                    1,
-                    2,
-                  ],
-    },
-          "raw": Object {
-            "skills": Array [
-              Object {
-                "id": 1,
-                "power": 5,
-              },
-              Object {
+        "raw": Object {
+          "skills": Array [
+            Object {
+              "id": 1,
+              "power": 5,
+            },
+            Object {
+              "id": 2,
+              "power": 2,
+              "target": Object {
                 "id": 2,
-                "power": 2,
-                "target": Object {
-                  "id": 2,
-                  "name": "Antoine",
-                },
+                "name": "Antoine",
+              },
+            },
+          ],
+          "users": Object {
+            "friends": Array [
+              Object {
+                "age": 28,
+                "id": 3,
+                "name": "Joffrey",
               },
             ],
-            "users": Object {
-              "friends": Array [
-                Object {
-                  "age": 28,
-                  "id": 3,
-                  "name": "Joffrey",
-                },
-              ],
-              "id": "2",
-            },
+            "id": "2",
           },
         },
       },
-},
+    },
+  },
 }
 `;
 
 exports[`Reducer should accept only one data 1`] = `
 Object {
-  "entities": Immutable.Map {
-    User: Object {
-        "2": Object {
-          "age": undefined,
-          "friends": undefined,
-          "id": "2",
-          "name": undefined,
-        },
+  "entities": Object {
+    "User": Object {
+      "2": Object {
+        "age": undefined,
+        "friends": undefined,
+        "id": "2",
+        "name": undefined,
       },
-},
-  "queries": Immutable.Map {
-},
+    },
+  },
+  "queries": Object {},
 }
 `;

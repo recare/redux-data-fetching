@@ -1,6 +1,6 @@
 {
   "name": "redux-data-fetching",
-  "version": "2.3.6-3",
+  "version": "2.3.5",
   "description": "Redux and Normalizr based data managment utilities",
   "main": "dist/bundle.js",
   "scripts": {
@@ -37,7 +37,7 @@
     "webpack-dev-server": "^2.6.1"
   },
   "dependencies": {
-    "immutable": "^4.0.0-rc.9",
+    "immutable": "3",
     "normalizr": "^3.2.1"
   },
   "peerDependencies": {
