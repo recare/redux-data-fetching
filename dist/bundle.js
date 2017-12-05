@@ -3716,13 +3716,14 @@ exports.default = function (schema, actions, normalizrModel, context, rootValue)
               dependencies: context
             }, mutation.variables, mutation.operationName).then(function (result) {
               if (result.errors === undefined && result.data) {
-                store.dispatch(actions.packageData((0, _graphqlTypesConverters.getDataFromResponse)(normalizrModel.converters, result.data), {
+                var data = (0, _graphqlTypesConverters.getDataFromResponse)(normalizrModel.converters, result.data);
+                store.dispatch(actions.packageData(data, {
                   request: _request,
                   response: {
                     raw: result.data
                   }
                 }));
-                mutation.onCompleted();
+                mutation.onCompleted(data);
               } else {
                 console.error("GraphQL mutation", mutation.mutationQL, "has failed.\n", "errors:", result.errors);
                 store.dispatch(actions.queryFailed({ request: _request }, result.errors));
